@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Бизнес-Английский: Aesthetic PRO</title>
+    <style>
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #0b0e14;
+            color: #f3f4f6; 
+            margin: 0;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        h1 { 
+            color: #e2e8f0; text-align: center; font-size: 1.8rem; 
+            margin: 15px 0 25px 0; font-weight: 700; letter-spacing: 0.5px;
+        }
+        .container { width: 100%; max-width: 480px; display: flex; flex-direction: column; flex-grow: 1; }
+        
+        /* КНОПКИ И МЕНЮ */
+        .menu-list { display: flex; flex-direction: column; gap: 16px; width: 100%; }
+        .btn-aesthetic {
+            width: 100%; background: linear-gradient(145deg, #1a1d24, #12151a);
+            color: #e2e8f0; border: 1px solid #2a2f3a; padding: 20px;
+            font-size: 1.15rem; font-weight: 600; border-radius: 20px;
+            cursor: pointer; transition: all 0.2s ease;
+            box-shadow: 4px 4px 10px rgba(0,0,0,0.4), -2px -2px 8px rgba(255,255,255,0.03);
+            display: flex; align-items: center; justify-content: center; gap: 10px; text-align: center;
+        }
+        .btn-aesthetic:active { transform: scale(0.97); }
+        
+        .accent-phrases { border-left: 4px solid #10b981; }
+        .accent-big { border-left: 4px solid #3b82f6; }
+        .accent-small { border-left: 4px solid #8b5cf6; }
+        .accent-unit2 { border-left: 4px solid #a855f7; }
+        .accent-hard { border-left: 4px solid #f59e0b; }
+        .accent-smart { border-left: 4px solid #ec4899; } 
+        .accent-test { border-left: 4px solid #eab308; } 
+        .accent-theory { border-left: 4px solid #0ea5e9; } 
+        
+        .btn-danger-icon {
+            background: linear-gradient(145deg, #2a1619, #1f1013); border: 1px solid #3a1f23;
+            color: #ef4444; padding: 20px; border-radius: 20px; font-size: 1.2rem;
+            cursor: pointer; transition: all 0.2s;
+        }
+        .btn-danger-icon:active { transform: scale(0.95); }
+
+        .btn-secondary { 
+            background: transparent; border: 1px solid #374151; color: #9ca3af; 
+            padding: 16px; margin-top: 15px; border-radius: 15px; width: 100%;
+            font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+        }
+        .btn-secondary:active { background: #1f2937; color: white;}
+
+        /* СПИСОК ПРЕДПРОСМОТРА И ОШИБОК */
+        .preview-list {
+            background: #14171d; border: 1px solid #2a2f3a; border-radius: 20px;
+            max-height: 50vh; overflow-y: auto; padding: 15px; margin-bottom: 20px;
+            box-shadow: inset 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .preview-item {
+            padding: 12px 10px; border-bottom: 1px solid #2a2f3a;
+            display: flex; flex-direction: column; gap: 5px;
+        }
+        .preview-item:last-child { border-bottom: none; }
+        .preview-en { color: #60a5fa; font-weight: bold; font-size: 1.1rem; }
+        .preview-ru { color: #d1d5db; font-size: 0.95rem; }
+
+        /* СПИСОК ТОПИКОВ (ТЕОРИЯ) */
+        .topic-list {
+            background: #14171d; border: 1px solid #2a2f3a; border-radius: 20px;
+            max-height: 60vh; overflow-y: auto; padding: 15px; margin-bottom: 20px;
+            display: flex; flex-direction: column; gap: 10px;
+        }
+        .topic-btn {
+            background: #1e222a; color: #e2e8f0; border: 1px solid #374151; padding: 15px;
+            border-radius: 15px; font-size: 1.05rem; font-weight: 600; cursor: pointer;
+            transition: all 0.2s; text-align: left;
+        }
+        .topic-btn:active { background: #2a2f3a; transform: scale(0.98); }
+        .topic-content-box {
+            background: #1e222a; border: 1px solid #374151; border-radius: 20px;
+            padding: 20px; max-height: 65vh; overflow-y: auto; color: #e2e8f0; line-height: 1.6;
+            font-size: 1.05rem;
+        }
+        .topic-content-box h2 { color: #0ea5e9; font-size: 1.4rem; margin-top: 0; margin-bottom: 15px; line-height: 1.3;}
+        .topic-content-box h3 { color: #3b82f6; font-size: 1.2rem; margin-top: 20px; margin-bottom: 10px;}
+        .topic-content-box p { margin-bottom: 15px; }
+        .topic-content-box ul, .topic-content-box ol { margin-top: 0; padding-left: 20px; margin-bottom: 15px; }
+        .topic-content-box li { margin-bottom: 8px; }
+
+        /* КАРТОЧКА */
+        .card {
+            background: linear-gradient(145deg, #1a1d24, #12151a);
+            width: 100%; flex-grow: 1; max-height: 60vh;
+            padding: 30px 20px; border-radius: 24px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center; margin-bottom: 20px; min-height: 320px;
+            position: relative; border: 1px solid #2a2f3a;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        
+        .swipe-left { transform: translateX(-120%) rotate(-15deg); opacity: 0; }
+        .swipe-right { transform: translateX(120%) rotate(15deg); opacity: 0; }
+
+        .phrase-main { font-size: 1.5rem; font-weight: 700; margin-bottom: 15px; color: #60a5fa; line-height: 1.4; word-wrap: break-word;}
+        .phrase-sub { font-size: 1.25rem; font-weight: 600; color: #f3f4f6; line-height: 1.4; margin-bottom: 12px; word-wrap: break-word;}
+        .transcription { font-size: 1.1rem; color: #64748b; font-style: italic; font-weight: normal; margin-bottom: 20px; }
+        
+        .speak-btn {
+            background: #1e293b; border: 1px solid #334155; font-size: 1.5rem; cursor: pointer; padding: 12px;
+            border-radius: 50%; transition: background 0.2s; color: white; margin-top: 15px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        .speak-btn:active { background: #334155; transform: scale(0.95); }
+
+        /* ИНПУТЫ И ПРОГРЕСС */
+        input[type="text"] {
+            width: 100%; padding: 18px; font-size: 16px; 
+            border: 2px solid #334155; border-radius: 16px; outline: none;
+            text-align: center; margin-bottom: 15px;
+            background: #0b0e14; color: #ffffff; transition: border-color 0.2s;
+        }
+        input[type="text"]:focus { border-color: #3b82f6; }
+        input.correct { border-color: #10b981 !important; background-color: #064e3b; color: #6ee7b7; }
+        input.wrong { border-color: #ef4444 !important; background-color: #7f1d1d; color: #fca5a5; }
+        
+        .progress-bar { width: 100%; background-color: #1e222a; border-radius: 10px; margin-bottom: 20px; overflow: hidden; height: 8px; border: 1px solid #2a2f3a;}
+        .progress-fill { height: 100%; background-color: #3b82f6; width: 0%; transition: width 0.3s ease; }
+        .block-info { font-size: 1rem; color: #94a3b8; margin-bottom: 20px; text-align: center; font-weight: 500; }
+        .status-text { margin-bottom: 20px; font-size: 1rem; font-weight: 600; min-height: 48px; display: flex; align-items: center; justify-content: center; flex-direction: column;}
+        
+        /* ПАНЕЛЬ КНОПОК КАРТОЧЕК */
+        .card-controls { display: flex; width: 100%; gap: 15px; margin-bottom: 10px; }
+        .btn-action {
+            flex: 1; padding: 16px; border-radius: 16px; font-size: 1.1rem; font-weight: 600;
+            border: none; cursor: pointer; transition: transform 0.1s, background-color 0.2s;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .btn-action:active { transform: scale(0.95); }
+        .btn-nope { background-color: #3f1d24; color: #fca5a5; border: 1px solid #7f1d1d; }
+        .btn-yep { background-color: #064e3b; color: #6ee7b7; border: 1px solid #065f46; }
+
+        /* УМНОЕ ЗАУЧИВАНИЕ И ТЕСТ (MCQ) */
+        .smart-stats-header {
+            display: flex; justify-content: space-between; width: 100%; margin-bottom: 10px; font-size: 0.95rem; font-weight: 700;
+        }
+        .sm-stat-gray { color: #9ca3af; }
+        .sm-stat-orange { color: #fdba74; }
+        .sm-stat-green { color: #6ee7b7; }
+        
+        .mcq-container { display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: 15px; }
+        .mcq-btn {
+            background: #1e222a; color: #e2e8f0; border: 1px solid #374151; padding: 15px 20px;
+            border-radius: 16px; font-size: 1.05rem; font-weight: 500; cursor: pointer;
+            transition: all 0.2s; text-align: left;
+        }
+        .mcq-btn:active { transform: scale(0.98); background: #2a2f3a; }
+        .mcq-btn.correct { background: #064e3b; border-color: #10b981; color: #6ee7b7;}
+        .mcq-btn.wrong { background: #7f1d1d; border-color: #ef4444; color: #fca5a5;}
+
+        /* ЭКРАН СТАТИСТИКИ */
+        .stats-container { display: flex; gap: 20px; align-items: center; justify-content: center; margin: 30px 0; width: 100%; }
+        .donut-wrapper {
+            width: 130px; height: 130px; border-radius: 50%; background: conic-gradient(#10b981 0%, #374151 0);
+            display: flex; justify-content: center; align-items: center; box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        .donut-inner {
+            width: 100px; height: 100px; border-radius: 50%; background: #0b0e14;
+            display: flex; justify-content: center; align-items: center; font-size: 1.8rem; font-weight: 700; color: #fff;
+        }
+        .stats-bars { flex-grow: 1; display: flex; flex-direction: column; gap: 12px; }
+        .stat-bar { display: flex; justify-content: space-between; padding: 12px 18px; border-radius: 12px; font-weight: 600; font-size: 1.1rem; }
+        .bar-green { background-color: #064e3b; color: #6ee7b7; border: 1px solid #10b981; }
+        .bar-orange { background-color: #78350f; color: #fdba74; border: 1px solid #f59e0b; }
+        .bar-gray { background-color: #1e222a; color: #9ca3af; border: 1px solid #374151; }
+        .stat-title { font-size: 1.5rem; color: #e2e8f0; text-align: center; font-weight: 700; line-height: 1.4; margin-top: 20px;}
+
+        /* ФУТЕР ОФОРМЛЕНИЯ */
+        .footer {
+            margin-top: auto; padding: 25px 0 10px 0; width: 100%; display: flex; align-items: center; justify-content: center; gap: 15px;
+            color: #475569; font-size: 0.85rem; font-weight: 600; letter-spacing: 1px;
+        }
+        .footer::before, .footer::after {
+            content: ''; height: 1px; flex-grow: 1; max-width: 80px; background: linear-gradient(90deg, transparent, #3b82f6, transparent); opacity: 0.5;
+        }
+
+        .hidden { display: none !important; }
+        .flashcard-interactive { cursor: pointer; user-select: none; }
+        .tap-hint { font-size: 0.95rem; color: #64748b; margin-top: 25px; font-weight: 500;}
+        .flex-row { display: flex; gap: 12px; width: 100%; }
+        .flex-col-center { display: flex; flex-direction: column; align-items: center; width: 100%; }
+    </style>
+</head>
+<body>
+
+<div class="container" id="app">
+    <h1 id="app-title">📚 Главное меню</h1>
+    
+    <!-- ШАГ 1: ВЫБОР СЛОВАРЯ ИЛИ ТЕОРИИ -->
+    <div id="dict-menu-screen">
+        <div class="menu-list">
+            <div class="flex-row">
+                <button class="btn-aesthetic accent-hard" id="btn-dict-hard" style="flex-grow: 1;">🔥 Трудные слова (0)</button>
+                <button class="btn-danger-icon" id="btn-clear-hard" title="Очистить">🗑️</button>
+            </div>
+            
+            <p class="block-info" style="margin: 10px 0 0 0; text-align: left; padding-left: 10px;">Юнит 1:</p>
+            <button class="btn-aesthetic accent-big" id="btn-dict-big">1.2 Большой словарь (86 шт)</button>
+            <button class="btn-aesthetic accent-small" id="btn-dict-small">1.2.1 Малый словарь (35 шт)</button>
+            <button class="btn-aesthetic accent-phrases" id="btn-dict-phrases">1.2.2 Словосочетания (23 шт)</button>
+            
+            <p class="block-info" style="margin: 10px 0 0 0; text-align: left; padding-left: 10px;">Юнит 2:</p>
+            <button class="btn-aesthetic accent-unit2" id="btn-dict-unit2">2.1 Большой словарь (74 шт)</button>
+            
+            <p class="block-info" style="margin: 10px 0 0 0; text-align: left; padding-left: 10px;">Для зачета (ПУКН):</p>
+            <button class="btn-aesthetic accent-test" id="btn-dict-100words">💯 100 слов ПУКН (100 шт)</button>
+            <button class="btn-aesthetic accent-theory" id="btn-theory-menu">📖 Топики (Теория)</button>
+        </div>
+    </div>
+
+    <!-- МЕНЮ ТОПИКОВ (ТЕОРИЯ) -->
+    <div id="theory-menu-screen" class="hidden">
+        <p class="block-info">Выберите тему для повторения:</p>
+        <div class="topic-list" id="topic-list-container"></div>
+        <button class="btn-secondary" id="btn-theory-to-main">🏠 На главную</button>
+    </div>
+
+    <!-- ПРОСМОТР ТОПИКА -->
+    <div id="theory-content-screen" class="hidden">
+        <div class="topic-content-box" id="topic-content-box"></div>
+        <div class="flex-row" style="margin-top: 15px;">
+            <button class="btn-secondary" id="btn-back-to-topics" style="margin-top: 0; flex: 1;">🔙 К темам</button>
+            <button class="btn-secondary" id="btn-theory-content-to-main" style="margin-top: 0; flex: 1;">🏠 На главную</button>
+        </div>
+    </div>
+
+    <!-- ШАГ 1.5: ПРЕДПРОСМОТР СЛОВАРЯ -->
+    <div id="preview-screen" class="hidden">
+        <p class="block-info" id="preview-title" style="color: #60a5fa; font-size: 1.1rem;"></p>
+        <div class="preview-list" id="preview-list-container"></div>
+        <button class="btn-aesthetic accent-big" id="btn-to-modes" style="margin-bottom: 5px;">⚙️ Выбрать режим</button>
+        <button class="btn-secondary" id="btn-to-main-from-preview">🏠 На главную</button>
+    </div>
+
+    <!-- ШАГ 2: ВЫБОР РЕЖИМА -->
+    <div id="mode-menu-screen" class="hidden">
+        <p class="block-info" id="selected-dict-info"></p>
+        <div class="menu-list">
+            <button class="btn-aesthetic accent-smart" id="btn-mode-smart-en">🧠 Умное заучивание (Англ ➔ Рус)</button>
+            <button class="btn-aesthetic accent-smart" id="btn-mode-smart-ru">🧠 Умное заучивание (Рус ➔ Англ)</button>
+            <hr style="width: 80%; border: 0; border-top: 1px solid #2a2f3a; margin: 5px auto;">
+            <button class="btn-aesthetic" id="btn-mode-en-ru">📇 Карточки: Англ ➔ Рус</button>
+            <button class="btn-aesthetic" id="btn-mode-ru-en">📇 Карточки: Рус ➔ Англ</button>
+            <hr style="width: 80%; border: 0; border-top: 1px solid #2a2f3a; margin: 5px auto;">
+            <button class="btn-aesthetic accent-test" id="btn-mode-test">📝 Пройти Тест</button>
+        </div>
+        <div class="flex-row">
+            <button class="btn-secondary" id="btn-to-preview-from-mode" style="flex: 1;">🔙 К списку</button>
+            <button class="btn-secondary" id="btn-to-main-from-mode" style="flex: 1;">🏠 На главную</button>
+        </div>
+    </div>
+
+    <!-- РЕЖИМ КАРТОЧЕК -->
+    <div id="flashcard-screen" class="hidden">
+        <div class="block-info" id="fc-counter"></div>
+        <div class="card flashcard-interactive" id="fc-card">
+            <div id="fc-front-container" class="flex-col-center">
+                <div class="phrase-main" id="fc-front"></div>
+                <div class="transcription hidden" id="fc-tr-front"></div>
+                <button class="speak-btn hidden" id="fc-speak-front">🔊</button>
+                <div class="tap-hint">Тапните, чтобы перевернуть 🔄</div>
+            </div>
+            <div id="fc-back-container" class="hidden flex-col-center">
+                <div class="phrase-sub" id="fc-back"></div>
+                <div class="transcription hidden" id="fc-tr-back"></div>
+                <button class="speak-btn hidden" id="fc-speak-back">🔊</button>
+                <div class="tap-hint">Тапните, чтобы вернуть 🔄</div>
+            </div>
+        </div>
+        <div class="card-controls">
+            <button class="btn-action btn-nope" id="btn-fc-nope">❌ Не помню</button>
+            <button class="btn-action btn-yep" id="btn-fc-yep">✅ Помню</button>
+        </div>
+        <div class="flex-row">
+            <button class="btn-secondary" id="btn-back-fc" style="flex: 1;">🔙 Режимы</button>
+            <button class="btn-secondary" id="btn-home-fc" style="flex: 1;">🏠 На главную</button>
+        </div>
+    </div>
+
+    <!-- УМНОЕ ЗАУЧИВАНИЕ -->
+    <div id="smart-screen" class="hidden">
+        <div class="smart-stats-header">
+            <span class="sm-stat-gray">Осталось: <span id="sm-rem-count"></span></span>
+            <span class="sm-stat-orange">Знакомые: <span id="sm-fam-count"></span></span>
+            <span class="sm-stat-green">Усвоенные: <span id="sm-mas-count"></span></span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" id="sm-progressFill"></div></div>
+
+        <div class="card" style="min-height: 280px; justify-content: flex-start; padding-top: 30px;">
+            <div class="phrase-sub" id="sm-question-ru" style="margin-bottom: 10px;"></div>
+            <div class="phrase-main" id="sm-question-en"></div>
+            <div class="transcription hidden" id="sm-tr"></div>
+            <button class="speak-btn hidden" id="sm-speak-btn" style="margin-bottom: 20px;">🔊</button>
+            
+            <div class="mcq-container hidden" id="sm-mcq-area"></div>
+            
+            <div id="sm-written-area" class="hidden" style="width: 100%; margin-top: 15px;">
+                <input type="text" id="sm-answerInput" placeholder="Введите ответ..." autocomplete="off" autocorrect="off" autocapitalize="none">
+                <button class="btn-aesthetic accent-smart" id="sm-checkBtn">Проверить</button>
+            </div>
+            
+            <div class="status-text" id="sm-statusText" style="margin-top: 20px;"></div>
+            <button class="btn-aesthetic hidden" id="sm-nextBtn">Дальше</button>
+        </div>
+        <div class="flex-row">
+            <button class="btn-secondary" id="btn-back-sm" style="flex: 1;">🔙 Режимы</button>
+            <button class="btn-secondary" id="btn-home-sm" style="flex: 1;">🏠 На главную</button>
+        </div>
+    </div>
+
+    <!-- РЕЖИМ ТЕСТА -->
+    <div id="test-screen" class="hidden">
+        <div class="smart-stats-header">
+            <span class="sm-stat-gray">Вопрос: <span id="test-q-count"></span></span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" id="test-progressFill"></div></div>
+
+        <div class="card" style="min-height: 280px; justify-content: flex-start; padding-top: 30px;">
+            <div class="phrase-sub" id="test-question-hint" style="margin-bottom: 10px; color: #9ca3af;"></div>
+            <div class="phrase-main" id="test-question-text"></div>
+            <div class="transcription hidden" id="test-tr"></div>
+            <button class="speak-btn hidden" id="test-speak-btn" style="margin-bottom: 20px;">🔊</button>
+            
+            <div class="mcq-container hidden" id="test-mcq-area"></div>
+            
+            <div id="test-written-area" class="hidden" style="width: 100%; margin-top: 15px;">
+                <input type="text" id="test-answerInput" placeholder="Ваш ответ..." autocomplete="off" autocorrect="off" autocapitalize="none">
+                <button class="btn-aesthetic accent-test" id="test-checkBtn">Ответить</button>
+            </div>
+            
+            <div class="status-text" id="test-statusText" style="margin-top: 20px;"></div>
+            <button class="btn-aesthetic hidden" id="test-nextBtn">Следующий вопрос</button>
+        </div>
+        <div class="flex-row">
+            <button class="btn-secondary" id="btn-back-test" style="flex: 1;">🔙 Выйти</button>
+            <button class="btn-secondary" id="btn-home-test" style="flex: 1;">🏠 На главную</button>
+        </div>
+    </div>
+
+    <!-- ИТОГОВЫЙ ЭКРАН СТАТИСТИКИ (ДЛЯ КАРТОЧЕК И SMART) -->
+    <div id="stats-screen" class="hidden" style="width: 100%;">
+        <div class="stat-title" id="stats-title-msg">Вы усердный ученик!<br>Продолжайте осваивать сложные термины.</div>
+        <p class="block-info" style="text-align: left; margin-top: 20px; margin-bottom: 5px;">Ваш прогресс</p>
+        
+        <div class="stats-container">
+            <div class="donut-wrapper" id="stats-donut">
+                <div class="donut-inner" id="stats-percent">100%</div>
+            </div>
+            <div class="stats-bars">
+                <div class="stat-bar bar-green"><span>Знаю</span> <span id="stats-known">0</span></div>
+                <div class="stat-bar bar-orange"><span>Ошибок</span> <span id="stats-learning">0</span></div>
+                <div class="stat-bar bar-gray"><span>Всего</span> <span id="stats-remaining">0</span></div>
+            </div>
+        </div>
+        <div class="menu-list" style="margin-top: 20px;">
+            <button class="btn-aesthetic accent-big" id="btn-stats-restart">🔄 Начать заново</button>
+            <button class="btn-secondary" id="btn-stats-menu">🏠 Главное меню</button>
+        </div>
+    </div>
+
+    <!-- ИТОГОВЫЙ ЭКРАН СТАТИСТИКИ ДЛЯ ТЕСТА -->
+    <div id="test-results-screen" class="hidden" style="width: 100%;">
+        <div class="stat-title" id="test-res-title">Результаты теста</div>
+        <div class="stats-container" style="margin-top: 20px;">
+            <div class="donut-wrapper" id="test-donut">
+                <div class="donut-inner" id="test-percent">100%</div>
+            </div>
+            <div class="stats-bars">
+                <div class="stat-bar bar-green"><span>Верно</span> <span id="test-res-correct">0</span></div>
+                <div class="stat-bar bar-orange"><span>Ошибок</span> <span id="test-res-wrong">0</span></div>
+            </div>
+        </div>
+        <div id="test-mistakes-container" class="hidden" style="width: 100%; text-align: left; margin-top: 20px;">
+            <p class="block-info" style="text-align: left; margin-bottom: 10px; color: #ef4444;">Список ваших ошибок:</p>
+            <div class="preview-list" id="test-mistakes-list" style="max-height: 25vh; margin-bottom: 15px;"></div>
+            <button class="btn-aesthetic accent-hard" id="btn-test-retake-mistakes">🔄 Пройти тест над ошибками</button>
+        </div>
+        <div class="menu-list" style="margin-top: 20px;">
+            <button class="btn-aesthetic accent-test" id="btn-test-restart">🔄 Начать тест заново</button>
+            <button class="btn-secondary" id="btn-test-to-menu">🏠 Главное меню</button>
+        </div>
+    </div>
+
+    <!-- ЭСТЕТИЧНЫЙ ФУТЕР -->
+    <div class="footer">
+        ✦ STUDY PRO ✦
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        // --- ДАННЫЕ СЛОВАРЕЙ ---
+        const dictPhrases = [
+            { en: "an interconnected system of departments and units", ru: "взаимосвязанная система отделов и подразделений", tr: "[ˌɪntəkəˈnektɪd] [dɪˈpɑːtmənts]" },
+            { en: "work-related activities of subordinates", ru: "производственная деятельность подчиненных", tr: "[səˈbɔːdɪnɪts]" },
+            { en: "duties and responsibilities", ru: "служебные функции и обязанности", tr: "[rɪˌspɒnsɪˈbɪlɪtiz]" },
+            { en: "to establish communication networks", ru: "установить систему информационных потоков", tr: "[ɪsˈtæblɪʃ]" },
+            { en: "time horizon", ru: "временной диапазон", tr: "[həˈraɪzn]" },
+            { en: "to departmentalize or cluster jobs", ru: "разбить организацию на функциональные отделы", tr: "[ˌdiːpɑːtˈmentəlaɪz]" },
+            { en: "disturbance handler", ru: "ответственный за разрешение конфликтов", tr: "[dɪsˈtɜːbəns]" },
+            { en: "to contribute toward the accomplishment of organizational objectives", ru: "способствовать достижению целей организации", tr: "[kənˈtrɪbjuːt] [əˈkʌmplɪʃmənt]" },
+            { en: "to energize somebody to put forth productive effort", ru: "стимулировать кого-либо в целях повышения усилий", tr: "[ˈenədʒaɪz]" },
+            { en: "job enrichment", ru: "расширение обязанностей и полномочий", tr: "[ɪnˈrɪtʃmənt]" },
+            { en: "to set clear objectives and devise strategies", ru: "поставить четкие цели и разработать стратегию", tr: "[dɪˈvaɪz ˈstrætədʒiz]" },
+            { en: "to implement work schedules", ru: "соблюдать рабочие графики", tr: "[ˈɪmplɪmənt ˈʃedjuːlz]" },
+            { en: "high levels of inter-personal skills", ru: "высокий уровень межличностных отношений", tr: "[ˌɪntəˈpɜːsənl]" },
+            { en: "span of control", ru: "норма управляемости", tr: "" },
+            { en: "to be enthusiastic about exerting effort to attain organizational objectives", ru: "быть мотивированным проявить усилия", tr: "[ɪnˌθjuːziˈæstɪk] [ɪɡˈzɜːtɪŋ]" },
+            { en: "to compare actual with planned performance", ru: "сравнить фактические результаты с запланированными", tr: "[kəmˈpeə ˈæktʃuəl]" },
+            { en: "to coordinate effort", ru: "координировать усилия", tr: "[kəʊˈɔːdɪneɪt]" },
+            { en: "a set of operational rules and regulations", ru: "свод операционных правил и нормативов", tr: "[ˌɒpəˈreɪʃənl] [ˌreɡjuˈleɪʃnz]" },
+            { en: "to inspire action", ru: "вдохновлять на трудовые достижения", tr: "[ɪnˈspaɪə]" },
+            { en: "to analyze competitive opportunities and threats", ru: "анализировать конкурентные возможности и риски", tr: "[ˈænəlaɪz kəmˈpetɪtɪv] [θrets]" },
+            { en: "to deviate from standards", ru: "отклониться от стандартов", tr: "[ˈdiːvieɪt]" },
+            { en: "to be aware of environmental conditions", ru: "ознакомиться с условиями бизнес-среды", tr: "[əˈweə] [ɪnˌvaɪrənˈmentl]" },
+            { en: "to forecast future conditions", ru: "прогнозировать будущие условия", tr: "[ˈfɔːkɑːst]" }
+        ];
+
+        const dictWordsBig = [
+            { en: "activities", ru: "действия, деятельность" }, { en: "peripheral activities", ru: "второстепенная деятельность", tr: "[pəˈrɪfərəl]" },
+            { en: "attain", ru: "достигать, добиваться", tr: "[əˈteɪn]" }, { en: "attain objectives/goals", ru: "достигать целей" },
+            { en: "authority", ru: "власть; полномочие", tr: "[ɔːˈθɒrɪti]" }, { en: "authorize", ru: "уполномочивать; разрешать", tr: "[ˈɔːθəraɪz]" },
+            { en: "command", ru: "команда, приказ", tr: "[kəˈmɑːnd]" }, { en: "chain of command", ru: "цепь инстанций, порядок субординации" },
+            { en: "communicate", ru: "общаться; сообщать", tr: "[kəˈmjuːnɪkeɪt]" }, { en: "communication", ru: "система информационных потоков" },
+            { en: "communications channels", ru: "каналы передачи информации" }, { en: "consistency", ru: "системность, последовательность", tr: "[kənˈsɪstənsi]" },
+            { en: "consistent", ru: "сообразный, согласующийся" }, { en: "contingency", ru: "непредвиденное обстоятельство", tr: "[kənˈtɪndʒənsi]" },
+            { en: "control", ru: "управлять, контролировать" }, { en: "Controlling", ru: "совокупность анализа и контроля" },
+            { en: "span of control", ru: "норма управляемости" }, { en: "delegate", ru: "делегировать полномочия, поручать" },
+            { en: "delegation", ru: "делегирование; передача полномочий" }, { en: "department", ru: "отдел" },
+            { en: "line department", ru: "линейный отдел" }, { en: "operate a department", ru: "управлять отделом" },
+            { en: "departmentalize", ru: "разбивать на отделы", tr: "[ˌdiːpɑːtˈmentəlaɪz]" }, { en: "deviate", ru: "отклоняться", tr: "[ˈdiːvieɪt]" },
+            { en: "deviation", ru: "отклонение" }, { en: "deviation from budgeted results", ru: "отклонение от запланированных результатов" },
+            { en: "direct", ru: "направлять, руководить" }, { en: "Directing", ru: "руководство" },
+            { en: "disturbance", ru: "беспорядки, конфликты", tr: "[dɪsˈtɜːbəns]" }, { en: "disturbance handler", ru: "наладчик по беспорядкам" },
+            { en: "division", ru: "подразделение" }, { en: "environment", ru: "среда; условия деятельности", tr: "[ɪnˈvaɪrənmənt]" },
+            { en: "business environment", ru: "экономическая обстановка" }, { en: "exert", ru: "оказать давление", tr: "[ɪɡˈzɜːt]" },
+            { en: "exert effort", ru: "прилагать усилия" }, { en: "expend", ru: "тратить, расходовать", tr: "[ɪkˈspend]" },
+            { en: "expend efforts", ru: "затрачивать усилия" }, { en: "framework", ru: "основа, база, рамки" },
+            { en: "function", ru: "функция" }, { en: "perform a function", ru: "выполнять функцию" },
+            { en: "govern", ru: "управлять; регулировать" }, { en: "governance", ru: "управление; руководство", tr: "[ˈɡʌvənəns]" },
+            { en: "corporate governance", ru: "корпоративное управление" }, { en: "hierarchy", ru: "иерархия", tr: "[ˈhaɪərɑːki]" },
+            { en: "hierarchical", ru: "иерархический", tr: "[ˌhaɪəˈrɑːkɪkl]" }, { en: "horizon", ru: "горизонт; кругозор", tr: "[həˈraɪzn]" },
+            { en: "to broaden one's horizons", ru: "расширять свой кругозор" }, { en: "time horizon", ru: "горизонт прогнозирования" },
+            { en: "horizontal", ru: "горизонтальный" }, { en: "horizontal communication", ru: "горизонтальная коммуникация" },
+            { en: "implement", ru: "реализовать; осуществлять", tr: "[ˈɪmplɪmənt]" }, { en: "incentive", ru: "стимул", tr: "[ɪnˈsentɪv]" },
+            { en: "monetary incentives", ru: "денежные стимулы" }, { en: "interconnected", ru: "взаимосвязанный", tr: "[ˌɪntəkəˈnektɪd]" },
+            { en: "job", ru: "место работы; должность" }, { en: "job description", ru: "должностные обязанности" },
+            { en: "job enlargement", ru: "расширение обязанностей" }, { en: "job enrichment", ru: "расширение полномочий", tr: "[ɪnˈrɪtʃmənt]" },
+            { en: "job rotation", ru: "ротация должностей" }, { en: "manage", ru: "управлять; руководить" },
+            { en: "management", ru: "управление, менеджмент" }, { en: "senior management", ru: "высшее руководство" },
+            { en: "middle management", ru: "руководство среднего звена" }, { en: "supervisory management", ru: "группа менеджеров" },
+            { en: "manpower", ru: "личный состав, кадры" }, { en: "manpower plan", ru: "план комплектования кадров" },
+            { en: "organization", ru: "организация; структура" }, { en: "matrix organization", ru: "матричная организация" },
+            { en: "line and staff organization", ru: "линейно-функциональная организация" }, { en: "performance", ru: "выполнение; результативность" },
+            { en: "company's performance", ru: "результативность деятельности фирмы" }, { en: "permeate", ru: "распространять, охватывать" },
+            { en: "personnel", ru: "штат, кадры, личный состав" }, { en: "procedure", ru: "порядок действий, алгоритм" },
+            { en: "policies and procedures", ru: "принципы и порядок" }, { en: "regulate", ru: "регулировать; регламентировать" },
+            { en: "regulation", ru: "положение, предписание" }, { en: "skill", ru: "искусство, мастерство, навык" },
+            { en: "interpersonal skills", ru: "навыки межличностного общения" }, { en: "train staff", ru: "обучать персонал" },
+            { en: "subordinate", ru: "подчиненный" }, { en: "techniques", ru: "методы" },
+            { en: "staff", ru: "штат, кадры" }, { en: "staffing", ru: "кадровое обеспечение" },
+            { en: "staffing position", ru: "штатная единица" }, { en: "unit", ru: "структурная единица" }
+        ];
+
+        const dictWordsSmall = [
+            { en: "accomplish", ru: "выполнять, достигать", tr: "[əˈkʌmplɪʃ]" }, { en: "ambiguity", ru: "двусмысленность", tr: "[ˌæmbɪˈɡjuːəti]" },
+            { en: "authority", ru: "власть, полномочия", tr: "[ɔːˈθɒrɪti]" }, { en: "awareness", ru: "осведомленность", tr: "[əˈweənəs]" },
+            { en: "command", ru: "команда, приказ", tr: "[kəˈmɑːnd]" }, { en: "consistency", ru: "последовательность", tr: "[kənˈsɪstənsi]" },
+            { en: "contingencies", ru: "непредвиденные обстоятельства", tr: "[kənˈtɪndʒənsiz]" }, { en: "departmentalize", ru: "разделять на отделы", tr: "[ˌdiːpɑːtˈmentəlaɪz]" },
+            { en: "effort", ru: "усилие" }, { en: "emphasis", ru: "акцент, особое внимание", tr: "[ˈemfəsɪс]" },
+            { en: "enrichment", ru: "обогащение", tr: "[ɪnˈrɪtʃmənt]" }, { en: "enlargement", ru: "расширение", tr: "[ɪnˈlɑːdʒmənt]" },
+            { en: "environment", ru: "среда, окружение", tr: "[ɪnˈvaɪrənmənt]" }, { en: "exert", ru: "прилагать, проявлять", tr: "[ɪɡˈzɜːt]" },
+            { en: "expend", ru: "тратить, расходовать", tr: "[ɪkˈspend]" }, { en: "govern", ru: "управлять, руководить" },
+            { en: "guide", ru: "направлять, руководить" }, { en: "hierarchy", ru: "иерархия", tr: "[ˈhaɪərɑːki]" },
+            { en: "hierarchical", ru: "иерархический", tr: "[ˌhaɪəˈrɑːkɪkl]" }, { en: "horizon", ru: "горизонт", tr: "[həˈraɪzn]" },
+            { en: "horizontal", ru: "горизонтальный" }, { en: "incentive", ru: "стимул, поощрение", tr: "[ɪnˈsentɪv]" },
+            { en: "inspire", ru: "вдохновлять", tr: "[ɪnˈspaɪə]" }, { en: "junior", ru: "младший" },
+            { en: "peripheral activities", ru: "второстепенная деятельность", tr: "[pəˈrɪfərəl]" }, { en: "permeate", ru: "проникать, распространяться", tr: "[ˈpɜːmieɪt]" },
+            { en: "personal", ru: "личный, персональный" }, { en: "personnel", ru: "персонал, кадры", tr: "[ˌpɜːsəˈnel]" },
+            { en: "procedure", ru: "процедура", tr: "[prəˈsiːdʒə]" }, { en: "senior", ru: "старший, высший" },
+            { en: "specify", ru: "точно определять, указывать" }, { en: "subordinate", ru: "подчиненный", tr: "[səˈbɔːdɪnɪt]" },
+            { en: "supervisory", ru: "контролирующий, надзорный", tr: "[ˌsuːpəˈvaɪzəri]" }, { en: "techniques", ru: "методы, приемы", tr: "[tekˈniːks]" },
+            { en: "unify", ru: "объединять", tr: "[ˈjuːnɪfaɪ]" }
+        ];
+
+        const dictUnit2 = [
+            { en: "accountability", ru: "подотчетность; ответственность; отчетность", tr: "[əˌkaʊntəˈbɪlɪti]" },
+            { en: "align (with)", ru: "выравнивать(ся), приводить в соответствие, равняться (на кого-л.); соглашаться (с кем-л.), присоединяться, вступать в союз", tr: "[əˈlaɪn]" },
+            { en: "alignment", ru: "группировка; образование союза; увязка, слаженность", tr: "[əˈlaɪnmənt]" },
+            { en: "alleviate", ru: "облегчать; смягчать", tr: "[əˈliːvieɪt]" },
+            { en: "to alleviate the risk", ru: "уменьшить риск" },
+            { en: "approach", ru: "подход, метод", tr: "[əˈprəʊtʃ]" },
+            { en: "business approach", ru: "деловой подход" },
+            { en: "team approach", ru: "командный подход" },
+            { en: "assess", ru: "оценивать; определять", tr: "[əˈses]" },
+            { en: "reassess", ru: "подвергать переоценке, пересмотру", tr: "[ˌriːəˈses]" },
+            { en: "avoid", ru: "избегать; уклоняться; сторониться", tr: "[əˈvɔɪd]" },
+            { en: "avoidance", ru: "предотвращение; избежание; избегание; уклонение", tr: "[əˈvɔɪdəns]" },
+            { en: "risk avoidance", ru: "избежание риска" },
+            { en: "tax avoidance", ru: "уклонение от уплаты налога, избежание налогов, уход от налогообложения (законными средствами)" },
+            { en: "aware", ru: "знающий, осведомлённый, сведущий, компетентный", tr: "[əˈweə]" },
+            { en: "awareness", ru: "информированность, осведомленность", tr: "[əˈweənəs]" },
+            { en: "environmental awareness", ru: "осознание необходимости охраны окружающей среды" },
+            { en: "benchmark", ru: "критерий; стандарт, ориентир", tr: "[ˈbentʃmɑːk]" },
+            { en: "external benchmarks", ru: "внешние ориентиры" },
+            { en: "commit", ru: "совершать; обязывать; вверять; доверять", tr: "[kəˈmɪt]" },
+            { en: "commitment", ru: "обязательство; приверженность; преданность; заинтересованность", tr: "[kəˈmɪtmənt]" },
+            { en: "genuine commitment", ru: "подлинная приверженность" },
+            { en: "compliance", ru: "соответствие; соблюдение; согласие", tr: "[kəmˈplaɪəns]" },
+            { en: "compliance risk", ru: "риск нормативно-правового несоответствия" },
+            { en: "compliance risk management", ru: "управление риском нормативно-правового несоответствия" },
+            { en: "compliance risk mapping", ru: "картирование рисков нормативно-правового несоответствия" },
+            { en: "consistent", ru: "последовательный; согласующийся; непротиворечивый; совместимый; состоятельный; достоверный", tr: "[kənˈsɪstənt]" },
+            { en: "disclosure", ru: "раскрытие; разглашение; открытие; разоблачение; обнаружение", tr: "[dɪsˈkləʊʒə]" },
+            { en: "corporate disclosure", ru: "раскрытие корпоративной информации" },
+            { en: "ensure", ru: "обеспечивать; гарантировать; ручаться; поручиться; подтвердить; сделать неизбежным; убедиться", tr: "[ɪnˈʃʊə]" },
+            { en: "ensure overall alignment", ru: "обеспечить расстановку сил, слаженность" },
+            { en: "environment", ru: "внешняя среда; окружающая обстановка; окружение; конъюнктура; сфера; реалии", tr: "[ɪnˈvaɪrənmənt]" },
+            { en: "business environment", ru: "экономическая обстановка; деловая среда; условия предпринимательской деятельности; конъюнктура рынка" },
+            { en: "evaluation", ru: "оценка, оценивание, аттестация (определение качества, значимости)", tr: "[ɪˌvæljuˈeɪʃn]" },
+            { en: "self-evaluation", ru: "самооценка" },
+            { en: "evaluate", ru: "оценивать; вычислять; определять стоимость", tr: "[ɪˈvæljueɪt]" },
+            { en: "expose", ru: "подвергать; обнажать; разоблачать; выставлять; раскрывать; экспонировать", tr: "[ɪkˈspəʊz]" },
+            { en: "exposure", ru: "риск; подвергание финансовому риску; покрытие, охват", tr: "[ɪkˈspəʊʒə]" },
+            { en: "business operation exposure", ru: "подверженность риску по деловым операциям" },
+            { en: "economic exposure", ru: "подверженность экономическому риску" },
+            { en: "market exposure", ru: "подверженность финансовому риску; демонстрация рынку" },
+            { en: "guide", ru: "направлять; руководить; вести; управлять", tr: "[ɡaɪd]" },
+            { en: "facilitate", ru: "облегчать", tr: "[fəˈsɪlɪteɪt]" },
+            { en: "facilitator", ru: "помощник, посредник; фасилитатор (профессионал для эффективного проведения встреч)", tr: "[fəˈsɪlɪteɪtə]" },
+            { en: "guideline", ru: "ориентир; директива; установка; критерий", tr: "[ˈɡaɪdlaɪn]" },
+            { en: "management", ru: "управление; заведование, руководство, менеджмент", tr: "[ˈmænɪdʒmənt]" },
+            { en: "strategic management", ru: "стратегическое управление/менеджмент" },
+            { en: "crisis management", ru: "антикризисное управление" },
+            { en: "milestone", ru: "веха; стадия; этап, промежуточный этап; запланированный показатель", tr: "[ˈmaɪlstəʊn]" },
+            { en: "milestones for control", ru: "контрольные отметки" },
+            { en: "milestone schedule", ru: "поэтапный график" },
+            { en: "mitigation", ru: "смягчение; уменьшение", tr: "[ˌmɪtɪˈɡeɪʃn]" },
+            { en: "mitigate", ru: "смягчать; уменьшать; облегчать", tr: "[ˈmɪtɪɡeɪt]" },
+            { en: "outcome", ru: "результат; итог; исход; последствие; выход", tr: "[ˈaʊtkʌm]" },
+            { en: "outline (n)", ru: "схема; план; контур; очертание; набросок", tr: "[ˈaʊtlaɪn]" },
+            { en: "outline (v)", ru: "намечать; обрисовывать; очерчивать", tr: "[ˈaʊtlaɪn]" },
+            { en: "performance", ru: "выполнение, исполнение; интенсивность труда", tr: "[pəˈfɔːməns]" },
+            { en: "bank performance", ru: "деятельность банка" },
+            { en: "performance management", ru: "организация хозяйственной деятельности; контроль эффективности; управление производительностью труда" },
+            { en: "performance measure", ru: "показатель работоспособности; рабочая характеристика" },
+            { en: "regulate", ru: "регулировать; регламентировать; упорядочивать", tr: "[ˈreɡjuleɪt]" },
+            { en: "regulator", ru: "регулятор; регламентирующий/контролирующий орган", tr: "[ˈreɡjuleɪtə]" },
+            { en: "regulatory", ru: "регулирующий; распорядительный", tr: "[ˈreɡjələtəri]" },
+            { en: "strategy", ru: "стратегия; линия поведения", tr: "[ˈstrætədʒi]" },
+            { en: "strategic", ru: "стратегический", tr: "[strəˈtiːdʒɪk]" },
+            { en: "strategic business unit (SBU)", ru: "стратегическая бизнес-единица (направление деятельности компании или ее продукт)" },
+            { en: "SWOT analysis", ru: "СВОТ анализ (оценка сильных, слабых сторон, возможностей и угроз)", tr: "[swɒt]" },
+            { en: "vision", ru: "мировоззренческая концепция, видение", tr: "[ˈvɪʒn]" },
+            { en: "shared vision", ru: "общее/единое видение; общая концепция" }
+        ];
+
+        const dict100Words = [
+            { en: "accelerate", ru: "ускорять", tr: "[əkˈseləreɪt]" },
+            { en: "accomplish", ru: "выполнять, достигать", tr: "[əˈkʌmplɪʃ]" },
+            { en: "accomplishment", ru: "достижение, выполнение", tr: "[əˈkʌmplɪʃmənt]" },
+            { en: "accountability", ru: "подотчетность; ответственность", tr: "[əˌkaʊntəˈbɪlɪti]" },
+            { en: "activities", ru: "действия, деятельность", tr: "[ækˈtɪvətiz]" },
+            { en: "align (with)", ru: "выравнивать(ся), приводить в соответствие", tr: "[əˈlaɪn]" },
+            { en: "alignment", ru: "группировка; увязка, слаженность", tr: "[əˈlaɪnmənt]" },
+            { en: "alleviate", ru: "облегчать; смягчать", tr: "[əˈliːvieɪt]" },
+            { en: "approach", ru: "подход, метод", tr: "[əˈprəʊtʃ]" },
+            { en: "assess", ru: "оценивать; определять", tr: "[əˈses]" },
+            { en: "attain objectives/goals", ru: "достигать целей", tr: "[əˈteɪn]" },
+            { en: "authority", ru: "власть; полномочие", tr: "[ɔːˈθɒrɪti]" },
+            { en: "authorize", ru: "уполномочивать; разрешать", tr: "[ˈɔːθəraɪz]" },
+            { en: "avoid", ru: "избегать; уклоняться", tr: "[əˈvɔɪd]" },
+            { en: "aware", ru: "знающий, осведомлённый", tr: "[əˈweə]" },
+            { en: "awareness", ru: "информированность, осведомленность", tr: "[əˈweənəs]" },
+            { en: "benchmark", ru: "критерий; стандарт, ориентир", tr: "[ˈbentʃmɑːk]" },
+            { en: "chain of command", ru: "цепь инстанций, порядок субординации", tr: "[tʃeɪn əv kəˈmɑːnd]" },
+            { en: "coherent", ru: "последовательный, связный, логичный", tr: "[kəʊˈhɪərənt]" },
+            { en: "commit", ru: "совершать; обязывать; вверять", tr: "[kəˈmɪt]" },
+            { en: "commitment", ru: "обязательство; приверженность", tr: "[kəˈmɪtmənt]" },
+            { en: "communicate", ru: "общаться; сообщать", tr: "[kəˈmjuːnɪkeɪt]" },
+            { en: "communicator", ru: "собеседник, коммуникатор", tr: "[kəˈmjuːnɪkeɪtə]" },
+            { en: "company’s performance", ru: "результативность деятельности фирмы", tr: "[pəˈfɔːməns]" },
+            { en: "competence", ru: "компетентность, способность", tr: "[ˈkɒmpɪtəns]" },
+            { en: "competition", ru: "конкуренция, соревнование", tr: "[ˌkɒmpəˈtɪʃn]" },
+            { en: "complex", ru: "сложный, комплексный", tr: "[ˈkɒmpleks]" },
+            { en: "compliance risk", ru: "риск нормативно-правового несоответствия", tr: "[kəmˈplaɪəns rɪsk]" },
+            { en: "consistency", ru: "системность, последовательность", tr: "[kənˈsɪstənsi]" },
+            { en: "consistent", ru: "последовательный; согласующийся", tr: "[kənˈsɪstənt]" },
+            { en: "contingency", ru: "непредвиденное обстоятельство", tr: "[kənˈtɪndʒənsi]" },
+            { en: "controller", ru: "контролер, управляющий", tr: "[kənˈtrəʊlə]" },
+            { en: "corporate disclosure", ru: "раскрытие корпоративной информации", tr: "[ˈkɔːpərət dɪsˈkləʊʒə]" },
+            { en: "crisis management", ru: "антикризисное управление", tr: "[ˈkraɪsɪs ˈmænɪdʒmənt]" },
+            { en: "delegate", ru: "делегировать полномочия, поручать", tr: "[ˈdelɪɡeɪt]" },
+            { en: "delegation", ru: "делегирование; передача полномочий", tr: "[ˌdelɪˈɡeɪʃn]" },
+            { en: "departmentalize", ru: "разбивать на отделы", tr: "[ˌdiːpɑːtˈmentəlaɪz]" },
+            { en: "deviate (from)", ru: "отклоняться", tr: "[ˈdiːvieɪt]" },
+            { en: "direct", ru: "направлять, руководить", tr: "[dəˈrekt]" },
+            { en: "disturbance handler", ru: "наладчик по беспорядкам", tr: "[dɪˈstɜːbəns ˈhændlə]" },
+            { en: "division", ru: "подразделение", tr: "[dɪˈvɪʒn]" },
+            { en: "downsize", ru: "сокращать штат, уменьшать размеры", tr: "[ˈdaʊnsaɪz]" },
+            { en: "dynamic", ru: "динамичный, динамика", tr: "[daɪˈnæmɪk]" },
+            { en: "ensure", ru: "обеспечивать; гарантировать", tr: "[ɪnˈʃʊə]" },
+            { en: "environment", ru: "внешняя среда; окружающая обстановка", tr: "[ɪnˈvaɪrənmənt]" },
+            { en: "evaluate", ru: "оценивать; вычислять", tr: "[ɪˈvæljueɪt]" },
+            { en: "evaluation", ru: "оценка, оценивание, аттестация", tr: "[ɪˌvæljuˈeɪʃn]" },
+            { en: "expose", ru: "подвергать; обнажать; разоблачать", tr: "[ɪkˈspəʊz]" },
+            { en: "exposure", ru: "риск; подвергание риску", tr: "[ɪkˈspəʊʒə]" },
+            { en: "facilitate", ru: "облегчать, содействовать", tr: "[fəˈsɪlɪteɪt]" },
+            { en: "facilitator", ru: "помощник, фасилитатор", tr: "[fəˈsɪlɪteɪtə]" },
+            { en: "guideline", ru: "ориентир; директива; установка", tr: "[ˈɡaɪdlaɪn]" },
+            { en: "horizontal relationships", ru: "горизонтальные связи/отношения", tr: "[ˌhɒrɪˈzɒntl rɪˈleɪʃnʃɪps]" },
+            { en: "implement", ru: "реализовать; осуществлять", tr: "[ˈɪmplɪmənt]" },
+            { en: "incentive", ru: "стимул", tr: "[ɪnˈsentɪv]" },
+            { en: "interconnection", ru: "взаимосвязь", tr: "[ˌɪntəkəˈnekʃn]" },
+            { en: "interpersonal skills", ru: "навыки межличностного общения", tr: "[ˌɪntəˈpɜːsənl skɪlz]" },
+            { en: "job description", ru: "должностные обязанности", tr: "[dʒɒb dɪˈskrɪpʃn]" },
+            { en: "job enlargement", ru: "расширение обязанностей", tr: "[dʒɒb ɪnˈlɑːdʒmənt]" },
+            { en: "job rotation", ru: "ротация должностей", tr: "[dʒɒb rəʊˈteɪʃn]" },
+            { en: "line and staff organization", ru: "линейно-функциональная организация", tr: "[laɪn ənd stɑːf]" },
+            { en: "manage", ru: "управлять; руководить", tr: "[ˈmænɪdʒ]" },
+            { en: "managerial", ru: "управленческий", tr: "[ˌmænəˈdʒɪəriəl]" },
+            { en: "manpower", ru: "личный состав, кадры", tr: "[ˈmænpaʊə]" },
+            { en: "matrix organization", ru: "матричная организация", tr: "[ˈmeɪtrɪks]" },
+            { en: "middle management", ru: "руководство среднего звена", tr: "[ˈmɪdl ˈmænɪdʒmənt]" },
+            { en: "milestone", ru: "веха; этап; запланированный показатель", tr: "[ˈmaɪlstəʊn]" },
+            { en: "mindset", ru: "образ мышления, менталитет", tr: "[ˈmaɪndset]" },
+            { en: "mitigate", ru: "смягчать; уменьшать", tr: "[ˈmɪtɪɡeɪt]" },
+            { en: "mitigation", ru: "смягчение; уменьшение", tr: "[ˌmɪtɪˈɡeɪʃn]" },
+            { en: "monetary incentives", ru: "денежные стимулы", tr: "[ˈmʌnɪtri ɪnˈsentɪvz]" },
+            { en: "neglect", ru: "пренебрегать, игнорировать", tr: "[nɪˈɡlekt]" },
+            { en: "organization chart", ru: "организационная структура/схема", tr: "[ˌɔːɡənaɪˈzeɪʃn tʃɑːt]" },
+            { en: "outcome", ru: "результат; итог; исход", tr: "[ˈaʊtkʌm]" },
+            { en: "outline", ru: "схема; план / намечать; обрисовывать", tr: "[ˈaʊtlaɪn]" },
+            { en: "performance", ru: "выполнение; результативность", tr: "[pəˈfɔːməns]" },
+            { en: "peripheral activities", ru: "второстепенная деятельность", tr: "[pəˈrɪfərəl]" },
+            { en: "permeate", ru: "распространять, охватывать, проникать", tr: "[ˈpɜːmieɪt]" },
+            { en: "personnel", ru: "штат, кадры, личный состав", tr: "[ˌpɜːsəˈnel]" },
+            { en: "policies and procedures", ru: "принципы и порядок", tr: "[ˈpɒləsiz ənd prəˈsiːdʒəz]" },
+            { en: "research", ru: "исследование, изучать", tr: "[rɪˈsɜːtʃ]" },
+            { en: "regulate", ru: "регулировать; регламентировать", tr: "[ˈreɡjuleɪt]" },
+            { en: "regulator", ru: "регулятор; регламентирующий орган", tr: "[ˈreɡjuleɪtə]" },
+            { en: "regulation", ru: "положение, предписание", tr: "[ˌreɡjuˈleɪʃn]" },
+            { en: "regulatory", ru: "регулирующий; распорядительный", tr: "[ˈreɡjələtəri]" },
+            { en: "schedule", ru: "расписание, график", tr: "[ˈʃedjuːl]" },
+            { en: "senior management", ru: "высшее руководство", tr: "[ˈsiːniə ˈmænɪdʒmənt]" },
+            { en: "shared vision", ru: "общее/единое видение", tr: "[ʃeəd ˈvɪʒn]" },
+            { en: "skill", ru: "искусство, мастерство, навык", tr: "[skɪl]" },
+            { en: "staff", ru: "штат, кадры", tr: "[stɑːf]" },
+            { en: "strategic business unit (SBU)", ru: "стратегическая бизнес-единица", tr: "[strəˈtiːdʒɪk]" },
+            { en: "strategic management", ru: "стратегическое управление", tr: "[strəˈtiːdʒɪk ˈmænɪdʒmənt]" },
+            { en: "strategy", ru: "стратегия; линия поведения", tr: "[ˈstrætədʒi]" },
+            { en: "subordinate", ru: "подчиненный", tr: "[səˈbɔːdɪnɪt]" },
+            { en: "supervisory management", ru: "группа менеджеров / оперативное руководство", tr: "[ˌsuːpəˈvaɪzəri]" },
+            { en: "SWOT analysis", ru: "СВОТ анализ", tr: "[swɒt]" },
+            { en: "tax avoidance", ru: "уклонение от уплаты налога (законными средствами)", tr: "[tæks əˈvɔɪdəns]" },
+            { en: "techniques", ru: "методы, приемы", tr: "[tekˈniːks]" },
+            { en: "train staff", ru: "обучать персонал", tr: "[treɪn stɑːf]" },
+            { en: "unify", ru: "объединять", tr: "[ˈjuːnɪfaɪ]" }
+        ];
+
+        // --- ДАННЫЕ ТОПИКОВ (ТЕОРИЯ) С ДЕТАЛИЗАЦИЕЙ ---
+        const topicsData = [
+            {
+                title: "Management, Functions & Skills",
+                content: "<h2>Management Overview</h2><p><b>Management</b> is the ongoing process of coordinating and overseeing the work activities of others so that their activities are completed efficiently and effectively. It means complete management of the business, including strategic goals such as expansion, increasing the market share, and ensuring financial control.</p><h3>Functions of Management</h3><ul><li><b>Planning:</b> Setting goals, establishing strategies, generating vision and mission statements, and developing overall corporate objectives (both financial and strategic).</li><li><b>Organizing:</b> Determining what needs to be done, departmentalizing or clustering jobs, establishing communication networks, and allocating resources.</li><li><b>Leading:</b> Energizing people to put forth productive effort, inspiring action, building a shared vision, and motivating teams.</li><li><b>Controlling:</b> Comparing actual with planned performance, evaluating results, and taking corrective actions to ensure activities are accomplished as planned.</li></ul><h3>Management Skills</h3><ul><li><b>Technical skills:</b> Job-specific knowledge and techniques needed to proficiently perform work tasks.</li><li><b>Interpersonal skills:</b> The ability to work well with other people, facilitate teamwork, act as a disturbance handler, and resolve conflicts.</li><li><b>Conceptual skills:</b> The ability to conceptualize complex situations, analyze competitive opportunities and threats, and forecast future conditions.</li></ul>"
+            },
+            {
+                title: "The Structure of Organization",
+                content: "<h2>Organizational Structure</h2><p><b>Organizational structure</b> is the formal arrangement of jobs within an organization. It establishes how tasks are divided, grouped, and coordinated.</p><ul><li><b>Chain of Command:</b> The continuous line of authority that extends from upper levels (senior management) to the lowest levels.</li><li><b>Span of Control:</b> The number of subordinates a manager can efficiently and effectively oversee.</li><li><b>Departmentalization:</b> The basis by which jobs are grouped together (e.g., matrix organization, line and staff organization).</li><li><b>Strategic Business Unit (SBU):</b> An independent direction of a company's activities or product line that has its own mission and objectives, independent planning, and its own target market.</li></ul>"
+            },
+            {
+                title: "Motivation and Motivational Theories",
+                content: "<h2>Motivational Theories</h2><p>Motivation involves energizing employees to put forth productive effort to attain organizational objectives. Key theories include:</p><ul><li><b>Maslow’s Hierarchy of Needs:</b> Needs are ranked from basic physiological to self-actualization. Lower-order needs must be satisfied before higher-order needs become motivating.</li><li><b>McGregor’s X and Y Theory:</b> <br><i>Theory X</i> assumes people dislike work, are lazy, and must be coerced (requiring strict control and monetary incentives). <br><i>Theory Y</i> assumes people are creative, enjoy work, and seek responsibility (thriving on job enrichment).</li><li><b>Herzberg’s Motivational Theory:</b> Also known as the Two-Factor Theory. It distinguishes between <i>hygiene factors</i> (which prevent dissatisfaction, like salary and working conditions) and <i>motivators</i> (which cause satisfaction, like achievement, recognition, and job enlargement).</li></ul>"
+            },
+            {
+                title: "Job analysis and Knowledge transfer",
+                content: "<h2>Job Analysis & Description</h2><p><b>Job analysis:</b> An assessment that defines jobs and the behaviors necessary to perform them.</p><p><b>Job description:</b> A written statement that describes a job, typically including duties, responsibilities, environment, and conditions of employment.</p><h3>Knowledge Transfer in Organizations</h3><ul><li><b>Training:</b> Planned efforts to help staff acquire job-related knowledge, skills, or behavior.</li><li><b>Mentoring:</b> A process where an experienced organizational member provides advice, coaching, and guidance to a less-experienced member.</li><li><b>Phased-retirement programs:</b> Arrangements allowing older workers to gradually reduce their hours while mentoring younger replacements.</li></ul>"
+            },
+            {
+                title: "Strategic Management",
+                content: "<h2>Strategic Management Process</h2><p>According to Robert Boyden Lamb, <b>strategic management</b> is an ongoing process that evaluates and controls the business, assesses competitors, and sets goals to meet existing and potential competition. It entails specifying the organization's mission and vision, developing policies, and allocating resources.</p><h3>Four Main Steps:</h3><ol><li><b>Environmental Scanning:</b> Collecting and scrutinizing information to analyze internal and external factors. This includes conducting a <b>SWOT Analysis</b> (identifying Strengths, Weaknesses, Opportunities, and Threats).</li><li><b>Strategy Formulation:</b> Deciding the best course of action. It involves generating vision statements, defining the corporate mission, and setting objectives.</li><li><b>Strategy Implementation:</b> Putting the chosen strategy into action. It requires designing the organization's structure, managing human resources, and securing genuine commitment from the senior team to build a shared vision.</li><li><b>Strategy Evaluation:</b> Measuring performance, appraising factors that are the root of present strategies, and taking corrective/remedial actions to ensure objectives are met.</li></ol>"
+            },
+            {
+                title: "Competitive Advantage & Porter’s Strategies",
+                content: "<h2>Competitive Advantage</h2><p><b>Competitive advantage</b> is what sets an organization apart; its distinctive edge that allows it to outperform rivals. Michael Porter defined several categories of competitive strategies:</p><ul><li><b>Cost Leadership:</b> Occurs when a company produces goods at a lower cost through the perfection of production methods or efficient resource utilization. It aims to offer the same quality product as competitors, but at a lower price, winning over consumers.</li><li><b>Differentiation:</b> Setting the business apart by finding one or more marketable attributes that consumers value and developing a niche market for those characteristics.</li><li><b>Defensive Strategy:</b> Maintaining an already gained competitive advantage to distance the business from competitors and keep its position secure.</li><li><b>Strategic Alliances:</b> Joint ventures where businesses pool resources and gain exposure at the expense of other competitors, without crossing the line into illegal price-fixing (collusion).</li></ul>"
+            },
+            {
+                title: "Crisis and Risk Management",
+                content: "<h2>Risk and Crisis Management</h2><p><b>Risk management</b> involves assessing potential threats, controlling threats to an organization's capital, and identifying ways to mitigate these risks. Risks can stem from financial uncertainty, legal liabilities, strategic errors, and natural disasters.</p><h3>Types of Risks:</h3><ul><li><b>Compliance Risk (Integrity Risk):</b> The risk of legal sanctions, material financial loss, or damaged reputation due to failure to comply with laws, regulations, and codes of conduct.</li><li><b>Operational Risk:</b> The risk of loss resulting from inadequate internal processes, people (negligence, willful misconduct), systems, or external events (power failures). Outsourcing also increases operational risk.</li></ul><p><b>Risk mitigation</b> strategies include <i>avoidance</i> (deflecting threats), <i>retention</i> (accepting risks when anticipated profit outweighs potential loss), and <i>sharing</i> risks with third parties.</p><h3>Crisis Management</h3><p>Unlike risk management, which focuses on prevention, <b>crisis management</b> deals with threats before, during, and after they have occurred. It requires making critical decisions within a short time frame to reduce uncertainty. To minimize damage, companies create and implement a crisis management plan.</p>"
+            },
+            {
+                title: "Corporate Governance",
+                content: "<h2>Corporate Governance</h2><p><b>Corporate governance</b> refers to the formally established guidelines, operational practices, and management protocols that determine how a company is directed and controlled. It provides the framework for attaining a company's objectives, encompassing internal controls, performance measurement, and corporate disclosure.</p><h3>Key Participants</h3><p>Corporate governance balances the interests of many stakeholders:</p><ul><li><b>Shareholders:</b> Own the company and have a financial interest in its success.</li><li><b>Board of Directors:</b> Oversee the managers, approve strategic guidelines, and ensure accountability.</li><li><b>Senior Management (Executives):</b> Run the daily operations and implement strategic plans.</li></ul><p>Other stakeholders include employees, customers, suppliers, and regulators (policy makers). Good corporate governance is not an end in itself; it is a means to sustainable economic efficiency, financial stability, and gaining a competitive advantage. It ensures transparency, ethical behavior, and sound corporate citizenship.</p>"
+            }
+        ];
+
+        // --- ЛОКАЛЬНОЕ СОХРАНЕНИЕ ТРУДНЫХ СЛОВ ---
+        let hardWordsList = JSON.parse(localStorage.getItem('hardWords')) || [];
+        function updateHardWordsBtn() {
+            const btn = document.getElementById('btn-dict-hard');
+            btn.innerText = `🔥 Трудные слова (${hardWordsList.length})`;
+            btn.disabled = hardWordsList.length === 0;
+            if(hardWordsList.length === 0) btn.style.opacity = '0.4';
+            else btn.style.opacity = '1';
+        }
+        function saveHardWord(wordObj) {
+            if (!hardWordsList.find(w => w.en === wordObj.en)) {
+                hardWordsList.push(wordObj);
+                localStorage.setItem('hardWords', JSON.stringify(hardWordsList));
+                updateHardWordsBtn();
+            }
+        }
+        document.getElementById('btn-clear-hard').addEventListener('click', () => {
+            if(confirm('Очистить список трудных слов?')) {
+                hardWordsList = []; localStorage.setItem('hardWords', JSON.stringify(hardWordsList)); updateHardWordsBtn();
+            }
+        });
+        updateHardWordsBtn();
+
+        // --- СОХРАНЕНИЕ ПРОГРЕССА СЕССИИ ---
+        function getSessionKey(mode) { return `session_${activeDictName}_${mode}`; }
+        function saveSession(mode, stateObj) { localStorage.setItem(getSessionKey(mode), JSON.stringify(stateObj)); }
+        function loadSession(mode) { const saved = localStorage.getItem(getSessionKey(mode)); return saved ? JSON.parse(saved) : null; }
+        function clearSession(mode) { localStorage.removeItem(getSessionKey(mode)); }
+
+        // --- ОЗВУЧКА ---
+        function speakEnglish(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel(); 
+                setTimeout(() => {
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = 'en-US'; utterance.rate = 0.9;
+                    let voices = window.speechSynthesis.getVoices();
+                    let enVoice = voices.find(v => v.lang.startsWith('en-US') || v.lang.startsWith('en'));
+                    if (enVoice) utterance.voice = enVoice;
+                    window.speechSynthesis.speak(utterance);
+                }, 50);
+            }
+        }
+        if ('speechSynthesis' in window) { window.speechSynthesis.onvoiceschanged = function() { window.speechSynthesis.getVoices(); }; }
+
+        document.querySelectorAll('.speak-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation(); 
+                if (!smartScreen.classList.contains('hidden')) speakEnglish(smCurrent.word.en);
+                else if (!testScreen.classList.contains('hidden')) speakEnglish(testCurrentWord.en);
+                else speakEnglish(workingArray[fcIndex].en);
+            });
+        });
+
+        // --- НАВИГАЦИЯ И СОСТОЯНИЕ ---
+        let currentDictionary = []; let activeDictName = ''; let workingArray = []; let currentModeName = '';
+        
+        const dictMenuScreen = document.getElementById('dict-menu-screen'); const previewScreen = document.getElementById('preview-screen');
+        const modeMenuScreen = document.getElementById('mode-menu-screen'); const flashcardScreen = document.getElementById('flashcard-screen');
+        const smartScreen = document.getElementById('smart-screen'); const statsScreen = document.getElementById('stats-screen'); 
+        const testScreen = document.getElementById('test-screen'); const testResultsScreen = document.getElementById('test-results-screen');
+        const theoryMenuScreen = document.getElementById('theory-menu-screen'); const theoryContentScreen = document.getElementById('theory-content-screen');
+        const appTitle = document.getElementById('app-title');
+
+        // Выбор словаря -> Предпросмотр
+        document.getElementById('btn-dict-hard').addEventListener('click', () => { if(hardWordsList.length > 0) openPreview(hardWordsList, 'hard', 'Трудные слова'); });
+        
+        document.getElementById('btn-dict-big').addEventListener('click', () => openPreview(dictWordsBig, 'big1', '1.2 Большой словарь'));
+        document.getElementById('btn-dict-small').addEventListener('click', () => openPreview(dictWordsSmall, 'small1', '1.2.1 Малый словарь'));
+        document.getElementById('btn-dict-phrases').addEventListener('click', () => openPreview(dictPhrases, 'phrases1', '1.2.2 Словосочетания'));
+        
+        document.getElementById('btn-dict-unit2').addEventListener('click', () => openPreview(dictUnit2, 'unit2', '2.1 Юнит 2 (Большой)'));
+        
+        document.getElementById('btn-dict-100words').addEventListener('click', () => openPreview(dict100Words, '100words', '100 слов ПУКН'));
+
+        function openPreview(dict, id, name) {
+            currentDictionary = dict; activeDictName = id;
+            document.getElementById('preview-title').innerText = `${name} (${dict.length} шт):`;
+            const listContainer = document.getElementById('preview-list-container'); listContainer.innerHTML = '';
+            dict.forEach(item => {
+                const div = document.createElement('div'); div.className = 'preview-item';
+                div.innerHTML = `<span class="preview-en">${item.en}</span><span class="preview-ru">${item.ru}</span>`;
+                listContainer.appendChild(div);
+            });
+            appTitle.innerText = "📖 Предпросмотр"; dictMenuScreen.classList.add('hidden'); previewScreen.classList.remove('hidden');
+        }
+
+        const goMainMenu = () => {
+            window.speechSynthesis.cancel(); appTitle.innerText = "📚 Главное меню";
+            [previewScreen, modeMenuScreen, flashcardScreen, smartScreen, statsScreen, testScreen, testResultsScreen, theoryMenuScreen, theoryContentScreen].forEach(s => s.classList.add('hidden'));
+            dictMenuScreen.classList.remove('hidden');
+        };
+
+        // Кнопки возврата на главную
+        document.getElementById('btn-to-main-from-preview').addEventListener('click', goMainMenu);
+        document.getElementById('btn-to-main-from-mode').addEventListener('click', goMainMenu);
+        document.getElementById('btn-home-fc').addEventListener('click', goMainMenu);
+        document.getElementById('btn-home-sm').addEventListener('click', goMainMenu);
+        document.getElementById('btn-stats-menu').addEventListener('click', goMainMenu);
+        document.getElementById('btn-home-test').addEventListener('click', goMainMenu);
+        document.getElementById('btn-test-to-menu').addEventListener('click', goMainMenu);
+        document.getElementById('btn-theory-to-main').addEventListener('click', goMainMenu);
+        document.getElementById('btn-theory-content-to-main').addEventListener('click', goMainMenu);
+
+        document.getElementById('btn-to-modes').addEventListener('click', () => {
+            document.getElementById('selected-dict-info').innerHTML = `Словарь: <b style="color:#60a5fa">${document.getElementById('preview-title').innerText.split('(')[0]}</b>`;
+            appTitle.innerText = "⚙️ Выбор режима"; previewScreen.classList.add('hidden'); modeMenuScreen.classList.remove('hidden');
+        });
+
+        document.getElementById('btn-to-preview-from-mode').addEventListener('click', () => {
+            appTitle.innerText = "📖 Предпросмотр"; modeMenuScreen.classList.add('hidden'); previewScreen.classList.remove('hidden');
+        });
+
+        function returnToModes() {
+            window.speechSynthesis.cancel(); appTitle.innerText = "⚙️ Выбор режима";
+            [flashcardScreen, smartScreen, testScreen].forEach(s => s.classList.add('hidden'));
+            modeMenuScreen.classList.remove('hidden');
+        }
+        
+        document.getElementById('btn-back-fc').addEventListener('click', returnToModes);
+        document.getElementById('btn-back-sm').addEventListener('click', returnToModes);
+        document.getElementById('btn-back-test').addEventListener('click', returnToModes);
+
+        document.getElementById('btn-stats-restart').addEventListener('click', () => {
+            statsScreen.classList.add('hidden');
+            if(currentModeName.startsWith('smart')) startSmartLearning(currentModeName, true);
+            else startFlashcards(currentModeName, true);
+        });
+
+        function shuffleArray(array) {
+            let shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        function showEndStats(known, errors, total) {
+            [flashcardScreen, smartScreen].forEach(s => s.classList.add('hidden'));
+            appTitle.innerText = "📊 Итоги";
+            
+            let percent = Math.round((known / total) * 100) || 0;
+            document.getElementById('stats-percent').innerText = percent + "%";
+            document.getElementById('stats-donut').style.background = `conic-gradient(#10b981 ${percent}%, #1e222a 0)`;
+            
+            document.getElementById('stats-known').innerText = known;
+            document.getElementById('stats-learning').innerText = errors;
+            document.getElementById('stats-remaining').innerText = total;
+            
+            let titleMsg = document.getElementById('stats-title-msg');
+            if(percent >= 90) titleMsg.innerHTML = "Потрясающе!<br>Вы отлично справились.";
+            else if(percent >= 60) titleMsg.innerHTML = "Хорошая работа!<br>Продолжайте в том же духе.";
+            else titleMsg.innerHTML = "Главное — практика!<br>Повторите трудные слова.";
+            
+            statsScreen.classList.remove('hidden'); clearSession(currentModeName);
+        }
+
+        // --- ЛОГИКА ТОПИКОВ (ТЕОРИЯ) ---
+        document.getElementById('btn-theory-menu').addEventListener('click', () => {
+            appTitle.innerText = "📖 Теория";
+            dictMenuScreen.classList.add('hidden'); theoryMenuScreen.classList.remove('hidden');
+            const listContainer = document.getElementById('topic-list-container');
+            listContainer.innerHTML = '';
+            
+            topicsData.forEach((topic, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'topic-btn';
+                btn.innerText = `${index + 1}. ${topic.title}`;
+                btn.onclick = () => openTopic(topic);
+                listContainer.appendChild(btn);
+            });
+        });
+
+        function openTopic(topic) {
+            appTitle.innerText = "📖 Чтение";
+            theoryMenuScreen.classList.add('hidden'); theoryContentScreen.classList.remove('hidden');
+            const contentBox = document.getElementById('topic-content-box');
+            contentBox.innerHTML = `<h2>${topic.title}</h2>${topic.content}`;
+            contentBox.scrollTop = 0;
+        }
+
+        document.getElementById('btn-back-to-topics').addEventListener('click', () => {
+            appTitle.innerText = "📖 Теория";
+            theoryContentScreen.classList.add('hidden'); theoryMenuScreen.classList.remove('hidden');
+        });
+
+        // --- ЛОГИКА КАРТОЧЕК ---
+        let fcIndex = 0; let fcMode = 'en-ru'; let fcFlipped = false; let isAnimating = false; let fcStatsKnown = 0; let fcStatsErrors = 0;
+        const fcCard = document.getElementById('fc-card');
+        const frontContainer = document.getElementById('fc-front-container');
+        const backContainer = document.getElementById('fc-back-container');
+
+        document.getElementById('btn-mode-en-ru').addEventListener('click', () => initMode('en-ru'));
+        document.getElementById('btn-mode-ru-en').addEventListener('click', () => initMode('ru-en'));
+        document.getElementById('btn-mode-smart-en').addEventListener('click', () => initSmartMode('smart-en'));
+        document.getElementById('btn-mode-smart-ru').addEventListener('click', () => initSmartMode('smart-ru'));
+
+        function initMode(mode) {
+            currentModeName = mode;
+            const saved = loadSession(mode);
+            if (saved) {
+                if(confirm("У вас есть незаконченная сессия в этом режиме. Продолжить?")) {
+                    resumeFlashcards(mode, saved); return;
+                } else clearSession(mode); 
+            }
+            startFlashcards(mode, true);
+        }
+
+        fcCard.addEventListener('click', function(e) { if(isAnimating || e.target.closest('.speak-btn')) return; toggleCardFlip(); });
+        document.getElementById('btn-fc-nope').addEventListener('click', swipeLeftAction);
+        document.getElementById('btn-fc-yep').addEventListener('click', swipeRightAction);
+
+        document.addEventListener('keydown', function(e) {
+            if (!flashcardScreen.classList.contains('hidden') && !isAnimating) {
+                if (e.code === 'Space') { e.preventDefault(); toggleCardFlip(); } 
+                else if (e.code === 'ArrowLeft') swipeLeftAction();
+                else if (e.code === 'ArrowRight') swipeRightAction();
+            }
+        });
+
+        let touchStartX = 0; let touchEndX = 0;
+        fcCard.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, {passive: true});
+        fcCard.addEventListener('touchend', e => {
+            if (isAnimating) return;
+            touchEndX = e.changedTouches[0].screenX; const threshold = 50;
+            if (Math.abs(touchEndX - touchStartX) > threshold) {
+                if (touchEndX < touchStartX - threshold) swipeLeftAction();
+                if (touchEndX > touchStartX + threshold) swipeRightAction();
+            }
+        }, {passive: true});
+
+        function swipeLeftAction() {
+            if(isAnimating) return; isAnimating = true; saveHardWord(workingArray[fcIndex]); fcStatsErrors++;
+            fcCard.classList.add('swipe-left'); setTimeout(() => resetCardAnimation(), 250);
+        }
+        function swipeRightAction() {
+            if(isAnimating) return; isAnimating = true; fcStatsKnown++;
+            fcCard.classList.add('swipe-right'); setTimeout(() => resetCardAnimation(), 250);
+        }
+        function resetCardAnimation() { fcCard.classList.remove('swipe-left', 'swipe-right'); nextFlashcard(); }
+
+        function toggleCardFlip() {
+            fcFlipped = !fcFlipped;
+            if (fcFlipped) {
+                frontContainer.classList.add('hidden'); backContainer.classList.remove('hidden');
+                if (fcMode === 'ru-en' && workingArray[fcIndex].tr) document.getElementById('fc-tr-back').classList.remove('hidden');
+            } else {
+                frontContainer.classList.remove('hidden'); backContainer.classList.add('hidden');
+            }
+        }
+
+        function startFlashcards(mode, fresh) {
+            fcMode = mode;
+            if(fresh) { fcIndex = 0; fcStatsKnown = 0; fcStatsErrors = 0; workingArray = shuffleArray(currentDictionary); }
+            appTitle.innerText = "📇 Карточки"; modeMenuScreen.classList.add('hidden'); flashcardScreen.classList.remove('hidden');
+            fcCard.classList.remove('swipe-left', 'swipe-right'); updateFlashcard();
+        }
+
+        function resumeFlashcards(mode, savedData) {
+            fcMode = mode; fcIndex = savedData.fcIndex; workingArray = savedData.workingArray; fcStatsKnown = savedData.known; fcStatsErrors = savedData.errors;
+            appTitle.innerText = "📇 Карточки"; modeMenuScreen.classList.add('hidden'); flashcardScreen.classList.remove('hidden'); updateFlashcard();
+        }
+
+        function updateFlashcard() {
+            fcFlipped = false; isAnimating = false;
+            document.getElementById('fc-counter').innerText = `${fcIndex + 1} / ${workingArray.length}`;
+            const word = workingArray[fcIndex];
+            const frontText = document.getElementById('fc-front'); const backText = document.getElementById('fc-back');
+            const trFront = document.getElementById('fc-tr-front'); const trBack = document.getElementById('fc-tr-back');
+
+            if (fcMode === 'en-ru') {
+                frontText.innerText = word.en; backText.innerText = word.ru;
+                if (word.tr) { trFront.innerText = word.tr; trFront.classList.remove('hidden'); } else trFront.classList.add('hidden');
+                trBack.classList.add('hidden'); document.getElementById('fc-speak-front').classList.remove('hidden'); document.getElementById('fc-speak-back').classList.add('hidden');
+            } else {
+                frontText.innerText = word.ru; backText.innerText = word.en; trFront.classList.add('hidden');
+                if (word.tr) { trBack.innerText = word.tr; trBack.classList.remove('hidden'); } else trBack.classList.add('hidden');
+                document.getElementById('fc-speak-front').classList.add('hidden'); document.getElementById('fc-speak-back').classList.remove('hidden');
+            }
+            frontContainer.classList.remove('hidden'); backContainer.classList.add('hidden');
+            saveSession(currentModeName, { workingArray, fcIndex, known: fcStatsKnown, errors: fcStatsErrors });
+        }
+
+        function nextFlashcard() {
+            fcIndex++; if (fcIndex >= workingArray.length) showEndStats(fcStatsKnown, fcStatsErrors, workingArray.length); else updateFlashcard();
+        }
+
+        // --- УМНОЕ ЗАУЧИВАНИЕ (QUIZLET STYLE) ---
+        let smartRemaining = []; let smartActive = []; let smCurrent = null; let smDirection = 'smart-en';
+        let smTotal = 0; let smMastered = 0; let smErrorsTotal = 0;
+
+        const smArea = document.getElementById('sm-cardArea');
+        const smQRu = document.getElementById('sm-question-ru'); const smQEn = document.getElementById('sm-question-en');
+        const smTr = document.getElementById('sm-tr'); const smSpeak = document.getElementById('sm-speak-btn');
+        const smMcqArea = document.getElementById('sm-mcq-area'); const smWrittenArea = document.getElementById('sm-written-area');
+        const smInput = document.getElementById('sm-answerInput'); const smCheckBtn = document.getElementById('sm-checkBtn');
+        const smStatus = document.getElementById('sm-statusText'); const smNextBtn = document.getElementById('sm-nextBtn');
+
+        smCheckBtn.addEventListener('click', handleSmartWritten);
+        smNextBtn.addEventListener('click', nextSmartTask);
+        smInput.addEventListener("keyup", function(e) { if (e.key === "Enter") { smInput.blur(); if (!smCheckBtn.classList.contains('hidden')) handleSmartWritten(); else if (!smNextBtn.classList.contains('hidden')) nextSmartTask(); } });
+
+        function initSmartMode(mode) {
+            currentModeName = mode;
+            const saved = loadSession(mode);
+            if (saved) {
+                if(confirm("У вас есть незаконченная сессия в умном режиме. Продолжить?")) { resumeSmart(saved); return; } 
+                else clearSession(mode); 
+            }
+            startSmartLearning(mode, true);
+        }
+
+        function startSmartLearning(mode, fresh) {
+            smDirection = mode; appTitle.innerText = "🧠 Заучивание";
+            modeMenuScreen.classList.add('hidden'); smartScreen.classList.remove('hidden');
+            
+            if(fresh) {
+                smartRemaining = shuffleArray(currentDictionary).map(w => ({ word: w, level: 0 }));
+                smartActive = []; smMastered = 0; smErrorsTotal = 0; smTotal = smartRemaining.length;
+            }
+            nextSmartTask();
+        }
+
+        function resumeSmart(saved) {
+            smDirection = saved.dir; smartRemaining = saved.rem; smartActive = saved.act;
+            smMastered = saved.mas; smErrorsTotal = saved.err; smTotal = saved.tot;
+            appTitle.innerText = "🧠 Заучивание"; modeMenuScreen.classList.add('hidden'); smartScreen.classList.remove('hidden');
+            nextSmartTask();
+        }
+
+        function updateSmartUI() {
+            let actLevels = smartActive.map(x=>x.level);
+            let fam = actLevels.filter(l=>l===1).length;
+            let rem = smartRemaining.length + actLevels.filter(l=>l===0).length;
+            
+            document.getElementById('sm-rem-count').innerText = rem;
+            document.getElementById('sm-fam-count').innerText = fam;
+            document.getElementById('sm-mas-count').innerText = smMastered;
+            document.getElementById('sm-progressFill').style.width = (smMastered / smTotal) * 100 + '%';
+            
+            saveSession(currentModeName, { dir: smDirection, rem: smartRemaining, act: smartActive, mas: smMastered, err: smErrorsTotal, tot: smTotal });
+        }
+
+        function nextSmartTask() {
+            if (smartActive.length === 0 && smartRemaining.length === 0) { showEndStats(smMastered, smErrorsTotal, smTotal); return; }
+            
+            while(smartActive.length < 7 && smartRemaining.length > 0) smartActive.push(smartRemaining.shift());
+            
+            smCurrent = smartActive.shift();
+            updateSmartUI();
+            
+            smQRu.innerText = ""; smQEn.innerText = ""; smTr.classList.add('hidden'); smSpeak.classList.add('hidden');
+            smMcqArea.classList.add('hidden'); smWrittenArea.classList.add('hidden'); smNextBtn.classList.add('hidden');
+            smStatus.innerText = ""; smInput.className = ""; smInput.value = "";
+            
+            let isEnToRu = smDirection === 'smart-en';
+            
+            if (isEnToRu) {
+                smQEn.innerText = smCurrent.word.en; smSpeak.classList.remove('hidden');
+                if (smCurrent.word.tr) { smTr.innerText = smCurrent.word.tr; smTr.classList.remove('hidden'); }
+            } else {
+                smQEn.innerText = smCurrent.word.ru; 
+            }
+
+            if (smCurrent.level === 0) renderMCQ(isEnToRu);
+            else if (smCurrent.level === 1) {
+                smWrittenArea.classList.remove('hidden'); smCheckBtn.classList.remove('hidden');
+                setTimeout(() => smInput.focus(), 100);
+            }
+        }
+
+        function renderMCQ(isEnToRu) {
+            smMcqArea.innerHTML = ''; smMcqArea.classList.remove('hidden');
+            let correctAnswer = isEnToRu ? smCurrent.word.ru : smCurrent.word.en;
+            
+            let pool = currentDictionary.filter(w => w.en !== smCurrent.word.en);
+            let shuffledPool = shuffleArray(pool);
+            let options = [smCurrent.word];
+            for(let i=0; i<3 && i<shuffledPool.length; i++) options.push(shuffledPool[i]);
+            options = shuffleArray(options);
+            
+            options.forEach(opt => {
+                let text = isEnToRu ? opt.ru : opt.en;
+                let btn = document.createElement('button');
+                btn.className = 'mcq-btn'; btn.innerText = text;
+                btn.onclick = () => handleMCQ(text, correctAnswer, btn, !isEnToRu ? opt.en : null);
+                smMcqArea.appendChild(btn);
+            });
+        }
+
+        function handleMCQ(selected, correct, btnNode, englishTextToSpeak) {
+            let btns = smMcqArea.querySelectorAll('.mcq-btn');
+            btns.forEach(b => b.disabled = true);
+            
+            if (selected === correct) {
+                btnNode.classList.add('correct'); smStatus.innerText = "✅ Верно!"; smStatus.style.color = "#10b981";
+                if(englishTextToSpeak) speakEnglish(englishTextToSpeak);
+                smCurrent.level = 1; smartActive.push(smCurrent);
+                setTimeout(nextSmartTask, 800);
+            } else {
+                smErrorsTotal++; saveHardWord(smCurrent.word);
+                btnNode.classList.add('wrong');
+                btns.forEach(b => { if(b.innerText === correct) b.classList.add('correct'); });
+                smStatus.innerHTML = "❌ Ошибка. Запомните верный вариант."; smStatus.style.color = "#ef4444";
+                if(englishTextToSpeak) speakEnglish(englishTextToSpeak);
+                smCurrent.level = 0; smartActive.push(smCurrent); 
+                smNextBtn.classList.remove('hidden');
+            }
+        }
+
+        function handleSmartWritten() {
+            let isEnToRu = smDirection === 'smart-en';
+            let correct = isEnToRu ? smCurrent.word.ru : smCurrent.word.en;
+            let userAns = smInput.value.toLowerCase().trim().replace(/\s+/g, ' ');
+            let targetAns = correct.toLowerCase().trim().replace(/\s+/g, ' ');
+
+            if (userAns === targetAns) {
+                smInput.classList.add('correct'); smStatus.innerText = "✅ Отлично! Слово усвоено."; smStatus.style.color = "#10b981";
+                if(!isEnToRu) speakEnglish(smCurrent.word.en);
+                smCurrent.level = 2; smMastered++; 
+                smCheckBtn.classList.add('hidden'); setTimeout(nextSmartTask, 1000);
+            } else {
+                smErrorsTotal++; saveHardWord(smCurrent.word);
+                smInput.classList.add('wrong');
+                smStatus.innerHTML = `❌ Ошибка.<br>Правильно: <br><span style="color:#60a5fa; font-weight:bold; font-size:1.2rem; margin-top:5px; display:inline-block;">${correct}</span>`;
+                smStatus.style.color = "#ef4444";
+                if(!isEnToRu) speakEnglish(smCurrent.word.en);
+                smCurrent.level = 0; smartActive.push(smCurrent); 
+                smCheckBtn.classList.add('hidden'); smNextBtn.classList.remove('hidden');
+            }
+        }
+
+        // --- РЕЖИМ: ПРОЙТИ ТЕСТ ---
+        let testArray = []; let testIndex = 0; let testErrors = []; let testScore = 0;
+        let testCurrentWord = null; let testIsEnToRu = true;
+
+        document.getElementById('btn-mode-test').addEventListener('click', () => {
+            currentModeName = 'test';
+            startTest(currentDictionary);
+        });
+
+        function startTest(words) {
+            testArray = shuffleArray([...words]);
+            testIndex = 0; testErrors = []; testScore = 0;
+            appTitle.innerText = "📝 Тест";
+            modeMenuScreen.classList.add('hidden'); testResultsScreen.classList.add('hidden'); testScreen.classList.remove('hidden');
+            nextTestQuestion();
+        }
+
+        function nextTestQuestion() {
+            if (testIndex >= testArray.length) { finishTest(); return; }
+
+            testCurrentWord = testArray[testIndex];
+            document.getElementById('test-q-count').innerText = `${testIndex + 1} / ${testArray.length}`;
+            document.getElementById('test-progressFill').style.width = (testIndex / testArray.length) * 100 + '%';
+
+            const mcqArea = document.getElementById('test-mcq-area'); const writtenArea = document.getElementById('test-written-area');
+            const input = document.getElementById('test-answerInput'); const nextBtn = document.getElementById('test-nextBtn');
+            const checkBtn = document.getElementById('test-checkBtn'); const status = document.getElementById('test-statusText');
+            const qText = document.getElementById('test-question-text'); const qHint = document.getElementById('test-question-hint');
+            const trText = document.getElementById('test-tr'); const speakBtn = document.getElementById('test-speak-btn');
+
+            mcqArea.innerHTML = ''; mcqArea.classList.add('hidden'); writtenArea.classList.add('hidden');
+            nextBtn.classList.add('hidden'); status.innerText = ''; input.className = ''; input.value = '';
+
+            testIsEnToRu = Math.random() > 0.5;
+            const isMcq = currentDictionary.length >= 4 ? Math.random() > 0.5 : false;
+
+            if (testIsEnToRu) {
+                qHint.innerText = "Переведите на русский:"; qText.innerText = testCurrentWord.en; speakBtn.classList.remove('hidden');
+                if (testCurrentWord.tr) { trText.innerText = testCurrentWord.tr; trText.classList.remove('hidden'); } else trText.classList.add('hidden');
+                speakEnglish(testCurrentWord.en);
+            } else {
+                qHint.innerText = "Переведите на английский:"; qText.innerText = testCurrentWord.ru; speakBtn.classList.add('hidden'); trText.classList.add('hidden');
+            }
+
+            if (isMcq) {
+                mcqArea.classList.remove('hidden');
+                let correctAns = testIsEnToRu ? testCurrentWord.ru : testCurrentWord.en;
+                let pool = currentDictionary.filter(w => w.en !== testCurrentWord.en);
+                let options = [testCurrentWord]; pool = shuffleArray(pool);
+                for(let i=0; i<3 && i<pool.length; i++) options.push(pool[i]);
+                options = shuffleArray(options);
+
+                options.forEach(opt => {
+                    let text = testIsEnToRu ? opt.ru : opt.en;
+                    let btn = document.createElement('button'); btn.className = 'mcq-btn'; btn.innerText = text;
+                    btn.onclick = () => handleTestMcq(text, correctAns, btn, !testIsEnToRu ? opt.en : null);
+                    mcqArea.appendChild(btn);
+                });
+            } else {
+                writtenArea.classList.remove('hidden'); checkBtn.classList.remove('hidden');
+                setTimeout(() => input.focus(), 100);
+            }
+        }
+
+        function handleTestMcq(selected, correct, btnNode, englishTextToSpeak) {
+            let btns = document.getElementById('test-mcq-area').querySelectorAll('.mcq-btn');
+            btns.forEach(b => b.disabled = true);
+            const status = document.getElementById('test-statusText');
+            
+            if (selected === correct) {
+                btnNode.classList.add('correct'); status.innerText = "✅ Верно!"; status.style.color = "#10b981"; testScore++;
+                if(englishTextToSpeak) speakEnglish(englishTextToSpeak);
+                setTimeout(() => { testIndex++; nextTestQuestion(); }, 800);
+            } else {
+                btnNode.classList.add('wrong');
+                btns.forEach(b => { if(b.innerText === correct) b.classList.add('correct'); });
+                status.innerHTML = "❌ Ошибка."; status.style.color = "#ef4444";
+                if(englishTextToSpeak) speakEnglish(englishTextToSpeak);
+                testErrors.push(testCurrentWord); saveHardWord(testCurrentWord);
+                document.getElementById('test-nextBtn').classList.remove('hidden');
+            }
+        }
+
+        function handleTestWritten() {
+            const input = document.getElementById('test-answerInput'); const status = document.getElementById('test-statusText');
+            const checkBtn = document.getElementById('test-checkBtn');
+            let correct = testIsEnToRu ? testCurrentWord.ru : testCurrentWord.en;
+            let userAns = input.value.toLowerCase().trim().replace(/\s+/g, ' '); let targetAns = correct.toLowerCase().trim().replace(/\s+/g, ' ');
+
+            if (userAns === targetAns) {
+                input.classList.add('correct'); status.innerText = "✅ Верно!"; status.style.color = "#10b981"; testScore++;
+                if(!testIsEnToRu) speakEnglish(testCurrentWord.en);
+                checkBtn.classList.add('hidden'); setTimeout(() => { testIndex++; nextTestQuestion(); }, 800);
+            } else {
+                input.classList.add('wrong');
+                status.innerHTML = `❌ Ошибка.<br>Правильно: <br><span style="color:#60a5fa; font-weight:bold; font-size:1.2rem; margin-top:5px; display:inline-block;">${correct}</span>`;
+                status.style.color = "#ef4444";
+                if(!testIsEnToRu) speakEnglish(testCurrentWord.en);
+                testErrors.push(testCurrentWord); saveHardWord(testCurrentWord);
+                checkBtn.classList.add('hidden'); document.getElementById('test-nextBtn').classList.remove('hidden');
+            }
+        }
+
+        document.getElementById('test-checkBtn').addEventListener('click', handleTestWritten);
+        document.getElementById('test-nextBtn').addEventListener('click', () => { testIndex++; nextTestQuestion(); });
+        document.getElementById('test-answerInput').addEventListener('keyup', e => {
+            if(e.key === 'Enter') {
+                e.target.blur();
+                if(!document.getElementById('test-checkBtn').classList.contains('hidden')) handleTestWritten();
+                else if(!document.getElementById('test-nextBtn').classList.contains('hidden')) { testIndex++; nextTestQuestion(); }
+            }
+        });
+
+        function finishTest() {
+            document.getElementById('test-screen').classList.add('hidden');
+            const resScreen = document.getElementById('test-results-screen'); resScreen.classList.remove('hidden');
+            appTitle.innerText = "📊 Результаты теста";
+
+            let total = testArray.length; let percent = Math.round((testScore / total) * 100) || 0;
+            document.getElementById('test-percent').innerText = percent + "%";
+            document.getElementById('test-donut').style.background = `conic-gradient(#10b981 ${percent}%, #1e222a 0)`;
+            document.getElementById('test-res-correct').innerText = testScore; document.getElementById('test-res-wrong').innerText = total - testScore;
+
+            const mistakesContainer = document.getElementById('test-mistakes-container'); const mistakesList = document.getElementById('test-mistakes-list');
+            if (testErrors.length > 0) {
+                mistakesContainer.classList.remove('hidden'); mistakesList.innerHTML = '';
+                let uniqueErrors = [...new Set(testErrors)];
+                uniqueErrors.forEach(item => {
+                    const div = document.createElement('div'); div.className = 'preview-item';
+                    div.innerHTML = `<span class="preview-en">${item.en}</span><span class="preview-ru">${item.ru}</span>`;
+                    mistakesList.appendChild(div);
+                });
+            } else mistakesContainer.classList.add('hidden');
+        }
+
+        document.getElementById('btn-test-retake-mistakes').addEventListener('click', () => {
+            let uniqueErrors = [...new Set(testErrors)];
+            startTest(uniqueErrors);
+        });
+
+        document.getElementById('btn-test-restart').addEventListener('click', () => {
+            testResultsScreen.classList.add('hidden'); startTest(currentDictionary);
+        });
+    });
+</script>
+</body>
+</html>
